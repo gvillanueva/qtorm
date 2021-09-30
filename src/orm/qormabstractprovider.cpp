@@ -22,6 +22,75 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QOrmAbstractProvider
+
+    \inmodule QtOrm
+    \brief The QOrmAbstractProvider provides the abstract interface for
+    database-specific backends.
+
+    The QOrmAbstractItemModel class defines teh standard interface that ORM
+    backends must use to be able to interoperate with QOrmSession manager.
+*/
+
+/*!
+    \fn QOrmAbstractProvider::~QOrmAbstractProvider
+
+    Destroys the object and frees any allocated resources.
+*/
+
+/*!
+    \fn QOrmAbstractProvider::connectToBackend()
+
+    Creates a connection to the backend using current connection values.
+*/
+
+/*!
+    \fn QOrmAbstractProvider::disconnectFromBackend()
+
+    Disconnects from the backend, freeing any resources acquired.
+*/
+
+/*!
+    \fn QOrmAbstractProvider::isConnectedToBackend()
+
+    Returns true if the backend connection is currently open; otherwise returns
+    false.
+*/
+
+/*!
+    \fn QOrmAbstractProvider::beginTransaction()
+
+    Begins a transaction on the backend if the provider supports transactions.
+    Returns QOrm::ErrorType::None if the operation succeeded. Otherwise it
+    returns a QOrmError initialized to the error creating transaction.
+*/
+
+/*!
+    \fn QOrmAbstractProvider::commitTransaction()
+
+    Commits a transaction to the backend if the provider supports transactions
+    and a transaction has been started. Returns QOrm::ErrorType::None if the
+    operation succeeded. Otherwise it returns a QOrmError initialized to the
+    error committing transaction.
+*/
+
+/*!
+    \fn QOrmAbstractProvider::rollbackTransaction()
+
+    Rolls back a transaction on the backend if the provider supports
+    transactions and a transaction has been started. Returns
+    QOrm::ErrorType::None if the operation succeeded. Otherwise it returns a
+    QOrmError initialized to the error rolling back transaction.
+*/
+
+/*!
+    \fn QOrmAbstractProvider::execute(const QOrmQuery& query,
+                                      QOrmEntityInstanceCache& entityInstanceCache)
+
+    Executes an ORM query on the backend and returns a QOrmQueryResult object.
+*/
+
 QOrmAbstractProvider::~QOrmAbstractProvider() = default;
 
 QT_END_NAMESPACE

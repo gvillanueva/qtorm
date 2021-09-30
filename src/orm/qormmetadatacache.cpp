@@ -32,6 +32,41 @@
 
 #include <optional>
 
+/*!
+    \class QOrmMetadataCache
+
+    \inmodule QtOrm
+    \brief The QOrmMetadataCache class
+*/
+
+/*!
+    \fn QOrmMetadataCache::QOrmMetadataCache
+*/
+
+/*!
+    \fn QOrmMetadataCache::QOrmMetadataCache
+*/
+
+/*!
+    \fn QOrmMetadataCache::~QOrmMetadataCache
+*/
+
+/*!
+    \fn QOrmMetadataCache::operator=
+*/
+
+/*!
+    \fn QOrmMetadataCache::operator[]
+*/
+
+/*!
+    \fn QOrmMetadataCache::get
+*/
+
+/*!
+    \fn QOrmMetadataCache::get
+*/
+
 namespace
 {
     struct KeywordDescriptor

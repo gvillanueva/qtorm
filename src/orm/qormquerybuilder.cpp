@@ -36,6 +36,53 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QOrmQueryBuilder
+
+    \inmodule QtOrm
+    \brief The QOrmQueryBuilder class
+*/
+
+/*!
+    \fn QOrmQueryBuilder::QOrmQueryBuilder
+*/
+
+/*!
+    \fn QOrmQueryBuilder::QOrmQueryBuilder
+*/
+
+/*!
+    \fn QOrmQueryBuilder::QOrmQueryBuilder
+*/
+
+/*!
+    \fn QOrmQueryBuilder::operator=
+*/
+
+/*!
+    \fn QOrmQueryBuilder::operator=
+*/
+
+/*!
+    \fn QOrmQueryBuilder::filter
+*/
+
+/*!
+    \fn QOrmQueryBuilder::order
+*/
+
+/*!
+    \fn QOrmQueryBuilder::instance
+*/
+
+/*!
+    \fn QOrmQueryBuilder::select
+*/
+
+/*!
+    \fn QOrmQueryBuilder::build
+*/
+
 namespace QOrmPrivate
 {
     template<typename ForwardIterable>

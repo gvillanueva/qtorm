@@ -34,6 +34,53 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QOrmSessionConfiguration
+
+    \inmodule QtOrm
+    \brief The QOrmSessionConfiguration class
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::defaultConfiguration
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::fromFile
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::QOrmSessionConfiguration
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::QOrmSessionConfiguration
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::QOrmSessionConfiguration
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::~QOrmSessionConfiguration
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::operator=
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::operator=
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::provider
+*/
+
+/*!
+    \fn QOrmSessionConfiguration::isVerbose
+*/
+
 class QOrmSessionConfigurationData : public QSharedData
 {
     friend class QOrmSessionConfiguration;

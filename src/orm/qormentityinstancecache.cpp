@@ -29,6 +29,49 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QOrmEntityInstanceCache
+
+    \inmodule QtOrm
+    \brief The QOrmEntityInstanceCache class
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::QOrmEntityInstanceCache
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::~QOrmEntityInstanceCache
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::get
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::contains
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::insert
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::take
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::finalize
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::isModified
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache::markUnmodified
+*/
+
 class QOrmEntityInstanceCachePrivate : public QObject
 {    
     Q_OBJECT        

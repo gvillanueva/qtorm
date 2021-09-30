@@ -36,6 +36,47 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QOrmSession
+
+    \inmodule QtOrm
+    \brief The QOrmSession class
+*/
+
+/*!
+    \fn template<typename T> bool QOrmSession::merge(T* entityInstance)
+    Merges
+*/
+
+/*!
+    \fn template<typename T> bool QOrmSession::merge(std::unique_ptr<T>& entityInstance)
+*/
+
+/*!
+    \fn template<typename T> bool QOrmSession::merge(std::initializer_list<T*> instances)
+*/
+
+/*!
+    \fn template<typename... Ts> bool QOrmSession::merge(Ts... instances)
+*/
+
+/*!
+    \fn template<typename T> std::unique_ptr<T> QOrmSession::remove(T* entityInstance)
+*/
+
+/*!
+    \fn template<typename T> QOrmQueryBuilder<T> QOrmSession::from()
+*/
+
+/*!
+    \fn template<typename T> QOrmQueryBuilder<T> QOrmSession::into()
+*/
+
+/*!
+    \fn QOrmEntityInstanceCache* QOrmSession::entityInstanceCache()
+    Declared, but undefined.
+*/
+
 class QOrmSessionPrivate
 {
     using TrackedEntityInstance = std::pair<QObject*, QOrm::Operation>;
@@ -148,6 +189,9 @@ QOrmSession::~QOrmSession()
     delete d_ptr;
 }
 
+/*!
+    Executes a constructed QOrmQuery and returns the result.
+*/
 QOrmQueryResult<QObject> QOrmSession::execute(const QOrmQuery& query)
 {
     Q_D(QOrmSession);
@@ -162,6 +206,9 @@ QOrmQueryResult<QObject> QOrmSession::execute(const QOrmQuery& query)
     return providerResult;
 }
 
+/*!
+    Reads the results of a query?
+*/
 QOrmQueryBuilder<QObject> QOrmSession::from(const QOrmQuery& query)
 {
     Q_ASSERT(query.operation() == QOrm::Operation::Read);
@@ -290,6 +337,9 @@ bool QOrmSession::doRemove(QObject* entityInstance, const QMetaObject& qMetaObje
     return d->m_lastError.type() == QOrm::ErrorType::None;
 }
 
+/*!
+    Declares a new transation for the execution of an ORM query?
+*/
 QOrmTransactionToken QOrmSession::declareTransaction(QOrm::TransactionPropagation propagation,
                                                      QOrm::TransactionAction finalAction)
 {
@@ -321,6 +371,9 @@ QOrmTransactionToken QOrmSession::declareTransaction(QOrm::TransactionPropagatio
     return QOrmTransactionToken{this, finalAction};
 }
 
+/*!
+    Returns the last error for the session, may be from provider or other component?
+*/
 QOrmError QOrmSession::lastError() const
 {
     Q_D(const QOrmSession);
@@ -328,6 +381,9 @@ QOrmError QOrmSession::lastError() const
     return d->m_lastError;
 }
 
+/*!
+    Returns the configuration object for this session.
+*/
 const QOrmSessionConfiguration& QOrmSession::configuration() const
 {
     Q_D(const QOrmSession);
@@ -335,12 +391,18 @@ const QOrmSessionConfiguration& QOrmSession::configuration() const
     return d->m_sessionConfiguration;
 }
 
+/*!
+    Returns a pointer to the session's metadata cache.
+*/
 QOrmMetadataCache* QOrmSession::metadataCache()
 {
     Q_D(QOrmSession);
     return &d->m_metadataCache;
 }
 
+/*!
+    Begins a new transaction in the session.
+*/
 bool QOrmSession::beginTransaction()
 {
     Q_D(QOrmSession);
@@ -372,6 +434,9 @@ bool QOrmSession::beginTransaction()
     return d->m_transactionCounter > 0;
 }
 
+/*!
+    Commits the current session transaction, sets error if no active transaction.
+*/
 bool QOrmSession::commitTransaction()
 {
     Q_D(QOrmSession);
@@ -408,6 +473,9 @@ bool QOrmSession::commitTransaction()
     return d->m_lastError.type() == QOrm::ErrorType::None;
 }
 
+/*!
+    Rolls back the active transaction, or set error if none exists.
+*/
 bool QOrmSession::rollbackTransaction()
 {
     Q_D(QOrmSession);
@@ -444,6 +512,9 @@ bool QOrmSession::rollbackTransaction()
     return d->m_lastError.type() == QOrm::ErrorType::None;
 }
 
+/*!
+    Returns whether the session has an active transaction.
+*/
 bool QOrmSession::isTransactionActive() const
 {
     Q_D(const QOrmSession);

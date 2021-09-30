@@ -24,6 +24,35 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QOrmError
+
+    \inmodule QtOrm
+    \brief The QOrmError class
+*/
+
+/*!
+    \fn QOrmError::QOrmError
+*/
+
+/*!
+    \fn QOrmError::type
+*/
+/*!
+    \fn QOrmError::text
+*/
+/*!
+    \fn QOrmError::operator==
+*/
+/*!
+    \fn QOrmError::operator!=
+*/
+
+/*!
+    \fn QOrmError::operator<< Overload to inject string description of error into
+    Qt debugging stream.
+*/
+
 QOrmError::QOrmError(QOrm::ErrorType error, const QString& text)
     : m_type{error}
     , m_text{text}
