@@ -25,4 +25,68 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QOrmQueryResult
+
+    \inmodule QtOrm
+    \brief The QOrmQueryResult is a templated class for the results of database
+    queries.
+*/
+
+/*!
+    \fn QOrmQueryResult::QOrmQueryResult
+*/
+
+/*!
+    \fn QOrmQueryResult::QOrmQueryResult
+*/
+
+/*!
+    \fn QOrmQueryResult::QOrmQueryResult
+*/
+
+/*!
+    \fn QOrmQueryResult::QOrmQueryResult
+*/
+
+/*!
+    \fn QOrmQueryResult::QOrmQueryResult
+*/
+
+/*!
+    \fn QOrmQueryResult::QOrmQueryResult
+*/
+
+/*!
+    \fn QOrmQueryResult::QOrmQueryResult
+*/
+
+/*!
+    \fn QOrmQueryResult::operator=
+*/
+
+/*!
+    \fn QOrmQueryResult::operator=
+*/
+
+/*!
+    \fn QOrmQueryResult::error
+*/
+
+/*!
+    \fn QOrmQueryResult::lastInsertedId
+*/
+
+/*!
+    \fn QOrmQueryResult::toVector
+*/
+
+/*!
+    \fn QOrmQueryResult::toStdVector
+*/
+
+/*!
+    \fn QOrmQueryResult::toSet
+*/
+
 QT_END_NAMESPACE

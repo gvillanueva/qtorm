@@ -1,0 +1,20 @@
+/*!
+    \module QtOrm
+    \title Qt ORM C++ Classes
+    \ingroup modules
+    \qtvariable orm
+    \brief Provides classes that establish object-relational mapping for Qt.
+
+    To use these classes in your application, use the following include
+    statement:
+
+    \code
+    #include <QtOrm/QtOrm>
+    \endcode
+
+    To link against the module, add this line to your \l qmake \c .pro file:
+
+    \code
+    QT += orm
+    \endcode
+*/

@@ -1,0 +1,8 @@
+/*!
+    \page orm-overview.html
+    \title Qt Orm Overview
+    \brief Provides insight into the Qt ORM module
+
+    Qt Orm enables you to store and restore QObject instances in any number of
+    persistent storage.
+*/

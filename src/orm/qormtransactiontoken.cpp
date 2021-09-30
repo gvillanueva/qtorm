@@ -22,6 +22,53 @@
 
 #include <QOrmSession>
 
+/*!
+    \class QOrmTransactionToken
+
+    \inmodule QtOrm
+    \brief The QOrmTransactionToken class
+*/
+
+/*!
+    \fn QOrmTransactionToken::QOrmTransactionToken
+*/
+
+/*!
+    \fn QOrmTransactionToken::QOrmTransactionToken
+*/
+
+/*!
+    \fn QOrmTransactionToken::QOrmTransactionToken
+*/
+
+/*!
+    \fn QOrmTransactionToken::~QOrmTransactionToken
+*/
+
+/*!
+    \fn QOrmTransactionToken::operator=
+*/
+
+/*!
+    \fn QOrmTransactionToken::operator=
+*/
+
+/*!
+    \fn QOrmTransactionToken::isEngaged
+*/
+
+/*!
+    \fn QOrmTransactionToken::disengage
+*/
+
+/*!
+    \fn QOrmTransactionToken::commit
+*/
+
+/*!
+    \fn QOrmTransactionToken::rollback
+*/
+
 class QOrmTransactionTokenPrivate
 {
     friend class QOrmTransactionToken;

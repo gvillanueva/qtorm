@@ -24,6 +24,34 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \namespace QOrm
+
+    \inmodule QtOrm
+    \brief The QOrm namespace contains global objects and identifiers for the QtOrm module.
+*/
+
+/*!
+    \enum QOrm::ErrorType
+*/
+
+/*!
+    \enum QOrm::TransactionPropagation
+*/
+
+/*!
+    \enum QOrm::TransactionAction
+*/
+
+/*!
+    \fn template<typename... Ts> inline constexpr void qRegisterOrmEntity()
+    Registers the listed types with the Qt ORM system.
+
+    Registers QVector, QSet, and pointer to object with the Qt Metatype system.
+    Also registers automatic container converter functions with Qt Metatype system,
+    if not already registered.
+ */
+
 namespace QOrm
 {
     uint qHash(QOrm::Comparison comparison) Q_DECL_NOTHROW
