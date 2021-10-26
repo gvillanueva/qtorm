@@ -34,9 +34,10 @@
 
 /*!
     \class QOrmMetadataCache
-
     \inmodule QtOrm
-    \brief The QOrmMetadataCache class
+
+    \brief The QOrmMetadataCache class stores entity metadata that overrides
+    default mapping behavior.
 */
 
 /*!

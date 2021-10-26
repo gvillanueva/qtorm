@@ -41,11 +41,34 @@ QT_BEGIN_NAMESPACE
 
     \inmodule QtOrm
     \brief The QOrmSession class
+
+    QOrmSession contains a process-level cache, entity metadata, an interface
+    for transaction control, and an interface for CRUD operations. A session
+    object is constructed with an optional session configuration. The session
+    configuration class QOrmSessionConfiguration contains a verbosity flag and a
+    database provider instance. If the session configuration parameter is not
+    specified, default session configuration is used.
+
+    The default session configuration is constructed from a JSON configuration
+    file. The file qtorm.json is searched in the application’s resource, in the
+    working directory, and in the application’s directory. It contains a
+    verbosity flag, a provider name, and a provider configuration. An example of
+    a session configuration file is shown in Listing 4.10.
+
+    A transaction scope can be started by calling the method
+    QOrmSession::declare-Transaction() and passing it a propagation mode and a
+    default action, as described in Section 3.8. Nested transaction scopes are
+    supported.
 */
 
 /*!
     \fn template<typename T> bool QOrmSession::merge(T* entityInstance)
-    Merges
+
+    \brief Creates or updates entities in the session's ORM provider.
+
+    Merges the argument and its reference instances, unless the instances is
+    marked as being merged already. This method processes a single entity
+    instance.
 */
 
 /*!
