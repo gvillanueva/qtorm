@@ -25,12 +25,15 @@ PUBLIC_HEADERS += \
     qormsessionconfiguration.h \
     qormsqliteconfiguration.h \
     qormsqliteprovider.h \
+    qormpsqlconfiguration.h \
+    qormpsqlprovider.h \
     qormtransactiontoken.h \
 
 PRIVATE_HEADERS = \
     qormglobal_p.h \
     qormmetadata_p.h \
     qormsqlitestatementgenerator_p.h \
+    qormpsqlstatementgenerator_p.h \
 
 SOURCES += \
     qormabstractprovider.cpp \
@@ -55,6 +58,9 @@ SOURCES += \
     qormsqliteconfiguration.cpp \
     qormsqliteprovider.cpp \
     qormsqlitestatementgenerator_p.cpp \
+    qormpsqlconfiguration.cpp \
+    qormpsqlprovider.cpp \
+    qormpsqlstatementgenerator_p.cpp \
     qormtransactiontoken.cpp \
 
 HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS

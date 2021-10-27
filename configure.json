@@ -10,6 +10,11 @@
             "label": "SQLite Backend", 
             "purpose": "Enables OR-mapping to SQLite databases.",
             "condition": true
+        },
+        "psql": {
+            "label": "PostgreSQL Backend",
+            "purpose": "Enables OR-mapping to PostgreSQL databases.",
+            "condition": true
         }
     }, 
     
