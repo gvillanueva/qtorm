@@ -23,12 +23,32 @@
 
 #include <QtOrm/qormglobal.h>
 
+#include <QtCore/qvariant.h>
+
 QT_BEGIN_NAMESPACE
+
+class QOrmMetadata;
+class QOrmQuery;
 
 class Q_ORM_EXPORT QOrmPSQLStatementGenerator
 {
 public:
-    QOrmPSQLStatementGenerator();
+    [[nodiscard]] static std::pair<QString, QVariantMap> generate(const QOrmQuery& query);
+
+    [[nodiscard]] static QString generate(const QOrmQuery& query, QVariantMap& boundParameters);
+
+    [[nodiscard]] static QString generateInsertStatement(const QOrmMetadata& relation,
+                                                         const QObject* instance,
+                                                         QVariantMap& boundParameters);
+
+    [[nodiscard]] static QString toPostgreSqlType(QVariant::Type type);
+
+    [[nodiscard]] static QString generateCreateTableStatement(
+        const QOrmMetadata& entity,
+        std::optional<QString> overrideTableName = std::nullopt);
+
+    [[nodiscard]] static QString generateDropTableStatement(const QOrmMetadata& entity,
+                                                            QVariantMap& boundParameters);
 };
 
 QT_END_NAMESPACE

@@ -29,6 +29,8 @@
 #include <QOrmMetadataCache>
 #include <QOrmSqliteConfiguration>
 #include <QOrmSqliteProvider>
+#include <QOrmPSQLConfiguration>
+#include <QOrmPSQLProvider>
 
 #include <QtCore/qstringbuilder.h>
 
@@ -83,6 +85,36 @@ static QOrmSqliteConfiguration _build_json_sqlite_configuration(const QJsonObjec
     return sqlConfiguration;
 }
 
+static QOrmPSQLConfiguration _build_json_psql_configuration(const QJsonObject& object)
+{
+    QOrmPSQLConfiguration sqlConfiguration;
+
+    sqlConfiguration.setDatabaseName(object["databaseName"].toString());
+    sqlConfiguration.setVerbose(object["verbose"].toBool(false));
+
+    QString schemaModeStr = object["schemaMode"].toString("validate").toLower();
+
+    static QHash<QString, QOrmPSQLConfiguration::SchemaMode> schemaModes = {
+        {"recreate", QOrmPSQLConfiguration::SchemaMode::Recreate},
+        {"create", QOrmPSQLConfiguration::SchemaMode::Recreate},
+        {"update", QOrmPSQLConfiguration::SchemaMode::Update},
+        {"validate", QOrmPSQLConfiguration::SchemaMode::Validate},
+        {"bypass", QOrmPSQLConfiguration::SchemaMode::Bypass},
+        {"append", QOrmPSQLConfiguration::SchemaMode::Append}};
+
+    if (schemaModes.contains(schemaModeStr))
+    {
+        sqlConfiguration.setSchemaMode(schemaModes[schemaModeStr]);
+    }
+    else
+    {
+        qCWarning(qtorm)
+            << "Invalid schemaMode in SQL provider configuration. Falling back to validate mode";
+        sqlConfiguration.setSchemaMode(QOrmPSQLConfiguration::SchemaMode::Validate);
+    }
+    return sqlConfiguration;
+}
+
 QOrmSessionConfiguration QOrmSessionConfiguration::defaultConfiguration()
 {
     static QStringList searchPaths = {":", ".", QCoreApplication::applicationDirPath()};
@@ -123,6 +155,12 @@ QOrmSessionConfiguration QOrmSessionConfiguration::fromFile(const QString& fileP
                 QOrmSqliteConfiguration sqlConfiguration =
                     _build_json_sqlite_configuration(rootObject["sqlite"].toObject());
                 provider = std::make_unique<QOrmSqliteProvider>(sqlConfiguration);
+            }
+            else if (rootObject["provider"].toString().compare("psql") == 0)
+            {
+                QOrmPSQLConfiguration sqlConfiguration =
+                    _build_json_psql_configuration(rootObject["psql"].toObject());
+                provider = std::make_unique<QOrmPSQLProvider>(sqlConfiguration);
             }
 
             return QOrmSessionConfiguration{provider.release(), isVerbose};
