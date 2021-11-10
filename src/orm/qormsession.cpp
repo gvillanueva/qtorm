@@ -247,6 +247,44 @@ QOrmQueryBuilder<QObject> QOrmSession::queryBuilderFor(const QMetaObject& relati
     return QOrmQueryBuilder<QObject>{this, QOrmRelation{d->m_metadataCache[relationMetaObject]}};
 }
 
+/*!
+   \internal
+   Creates or updates an entity instance and its referenced entity instances
+   within the session's provider.
+
+   \brief QOrmSession::doMerge
+   \param entityInstance
+   \param qMetaObject
+   \return
+
+   Ensures entityInstance is not null.
+   Ensures entityInstances is NOT in the midst of a merge
+   Starts transaction
+   Adds instance to merging instances
+   Clear last error
+   Ensure provider connected (if not connected, connect)
+   Operation is update if entity instance already cached. Else create.
+   If operation is update, return early if entity is unmodified
+   Get ORM metadata for entity's QMetaObject
+   Report potential fatal cross-reference error
+   Merge modified reference entity instances before data members
+   * Skip non-references/transients obv
+   * Get QVariant value for entityInstance reference
+   * Ensure reference instance needs merge
+   * Recursive call to doMerge for referencedInstance, return false if failed
+   Use session's provider to execute query built for entity metatype/instance/operation
+   Set last error to result of query from previous line
+   If there was no error
+   * For creation,
+   * If ID is auto generated, set the retrieved value
+   * Insert and finalize entity instance in metadata cache
+   * For update, mark cached entity instance unmodified
+   * Commit transaction if all goes well
+   Return last error == none
+   Remove entity instance from merging instances
+   Add entity instance to tracked instances
+
+ */
 bool QOrmSession::doMerge(QObject* entityInstance, const QMetaObject& qMetaObject)
 {
     Q_D(QOrmSession);

@@ -123,6 +123,12 @@ namespace QOrmPrivate
         return repr;
     }
 
+    /*!
+     * Iterate mappings in entity
+     * * Skip non-reference mappings
+     * * ASSERT mapping's referenced entity is not null
+     * *
+     */
     std::optional<QString> crossReferenceError(const QOrmMetadata& entity,
                                                const QObject* entityInstance)
     {
