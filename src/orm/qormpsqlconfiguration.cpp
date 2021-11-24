@@ -22,6 +22,16 @@
 
 QT_BEGIN_NAMESPACE
 
+QString QOrmPSQLConfiguration::hostName() const
+{
+    return m_hostName;
+}
+
+void QOrmPSQLConfiguration::setHostName(const QString &hostName)
+{
+    m_hostName = hostName;
+}
+
 QString QOrmPSQLConfiguration::connectOptions() const
 {
     return m_connectOptions;
@@ -60,6 +70,26 @@ QOrmPSQLConfiguration::SchemaMode QOrmPSQLConfiguration::schemaMode() const
 void QOrmPSQLConfiguration::setSchemaMode(SchemaMode schemaMode)
 {
     m_schemaMode = schemaMode;
+}
+
+QString QOrmPSQLConfiguration::userName() const
+{
+    return m_userName;
+}
+
+void QOrmPSQLConfiguration::setUserName(const QString &userName)
+{
+    m_userName = userName;
+}
+
+QString QOrmPSQLConfiguration::password() const
+{
+    return m_password;
+}
+
+void QOrmPSQLConfiguration::setPassword(const QString &password)
+{
+    m_password = password;
 }
 
 QT_END_NAMESPACE

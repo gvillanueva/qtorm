@@ -26,7 +26,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QOrmPSQLConfiguration
+class Q_ORM_EXPORT QOrmPSQLConfiguration
 {
 public:
     enum class SchemaMode
@@ -39,6 +39,10 @@ public:
     };
 
 public:
+    Q_REQUIRED_RESULT
+    QString hostName() const;
+    void setHostName(const QString& hostName);
+
     Q_REQUIRED_RESULT
     QString connectOptions() const;
     void setConnectOptions(const QString& connectOptions);
@@ -55,11 +59,22 @@ public:
     SchemaMode schemaMode() const;
     void setSchemaMode(SchemaMode schemaMode);
 
+    Q_REQUIRED_RESULT
+    QString userName() const;
+    void setUserName(const QString& userName);
+
+    Q_REQUIRED_RESULT
+    QString password() const;
+    void setPassword(const QString& password);
+
 private:
+    QString m_hostName;
     QString m_connectOptions;
     QString m_databaseName;
     bool m_verbose{false};
     SchemaMode m_schemaMode;
+    QString m_userName;
+    QString m_password;
 };
 
 QT_END_NAMESPACE
